@@ -15,6 +15,8 @@ BASH_ENV=$HOME/.bashrc
 
 export BASH_ENV PATH
 
+alias clean='find . -name \*~ | xargs rm'
+
 set -o vi
 
 umask 002
