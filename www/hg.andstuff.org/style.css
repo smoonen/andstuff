@@ -1,0 +1,46 @@
+BODY {
+	background: #2f2f2f;
+	margin: 10px;
+}
+.OuterTable {
+	border: 2px solid black;
+	padding: 0px;
+	margin: 0px;
+}
+.InnerTable {
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 20px;
+	margin: 0px;
+	background: white;
+}
+.LeftColumn {
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 20px;
+}
+.RightColumn {
+	padding: 5px;
+}
+.Date {
+	color: #808080;
+	font-style: italic;
+	padding-right: 5px;
+}
+.EventList ul {
+	margin: 0px;
+	padding: 0px;
+	margin-top: 5px;
+	list-style: none;
+}
+.EventList li {
+	padding-left: 0px;
+	margin-left: 0px;
+}
+.BottomText {
+	font-size: small;
+	color: #505050;
+}
+.BottomText a {
+	color: #505050;
+}
