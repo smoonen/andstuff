@@ -3,7 +3,7 @@ server {
   server_name sweeponomics.com www.sweeponomics.com;
 
   location / {
-    root /var/www/sweeponomics.com;
+    root /home/andstuff/www/sweeponomics.com;
     index index.html index.htm;
   }
 }

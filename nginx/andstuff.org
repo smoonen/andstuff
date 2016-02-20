@@ -3,7 +3,7 @@ server {
   server_name andstuff.org scott.andstuff.org;
 
   location / {
-    root /var/www/andstuff.org;
+    root /home/andstuff/www/andstuff.org;
     index index.html index.htm;
 
     rewrite ^/$          http://scottmoonen.com/ permanent;
@@ -72,7 +72,7 @@ server {
   listen 80;
   server_name hg.andstuff.org;
   location / {
-    root /var/www/hg.andstuff.org;
+    root /home/andstuff/www/hg.andstuff.org;
     index index.html index.htm;
   }
 }

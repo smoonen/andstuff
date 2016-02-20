@@ -3,7 +3,7 @@ server {
   server_name guestview.org www.guestview.org;
 
   location / {
-    root /var/www/guestview.org;
+    root /home/andstuff/www/guestview.org;
     index index.html index.htm;
   }
 }

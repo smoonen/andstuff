@@ -3,7 +3,7 @@ server {
   server_name benevolition.com www.benevolition.com benevolition.org www.benevolition.org;
 
   location / {
-    root /var/www/benevolition.com;
+    root /home/andstuff/www/benevolition.com;
     index index.html index.htm;
   }
 }
