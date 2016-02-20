@@ -1,3 +1,5 @@
+Change account password
+Record root password
 Copy id_rsa to personal computer
 Add id_rsa to Github
 Reroute DNS
