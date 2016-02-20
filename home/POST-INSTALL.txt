@@ -1,0 +1,5 @@
+Copy id_rsa to personal computer
+Add id_rsa to Github
+Reroute DNS
+Schedule delete of old server
+
