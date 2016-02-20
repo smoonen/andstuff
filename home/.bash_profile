@@ -12,8 +12,9 @@ fi
 
 PATH=$PATH:$HOME/bin
 BASH_ENV=$HOME/.bashrc
+EDITOR=/usr/bin/vi
 
-export BASH_ENV PATH
+export BASH_ENV PATH EDITOR
 
 alias clean='find . -name \*~ | xargs rm'
 
