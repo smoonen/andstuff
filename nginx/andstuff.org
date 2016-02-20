@@ -1,0 +1,95 @@
+server {
+  listen 80 default;
+  server_name andstuff.org scott.andstuff.org;
+
+  location / {
+    root /var/www/andstuff.org;
+    index index.html index.htm;
+
+    rewrite ^/$          http://scottmoonen.com/ permanent;
+    rewrite ^/index.cgi$ http://scottmoonen.com/feed/ permanent;
+    rewrite ^/feed       http://scottmoonen.com/feed/ permanent;
+    rewrite ^/AccomplishingGoals$          http://scottmoonen.com/2006/09/11/accomplishing-goals/ permanent;
+    rewrite ^/BabyWise$                    http://scottmoonen.com/2005/04/23/baby-wise/ permanent;
+    rewrite ^/BiblicalTheology$            http://scottmoonen.com/2005/03/24/biblical-theology/ permanent;
+    rewrite ^/Books$                       http://scottmoonen.com/category/books/ permanent;
+    rewrite ^/ChristIsLord$                http://scottmoonen.com/2007/01/24/christ-is-lord/ permanent;
+    rewrite ^/ComfortAndJoy$               http://scottmoonen.com/2004/11/24/comfort-and-joy/ permanent;
+    rewrite ^/CommonGrace$                 http://scottmoonen.com/2006/03/03/common-grace/ permanent;
+    rewrite ^/CrockPotAppleButter$         http://scottmoonen.com/2006/01/07/crock-pot-apple-butter/ permanent;
+    rewrite ^/DateIdeas$                   http://delicious.com/smoonen/date-ideas permanent;
+    rewrite ^/DateQuestions$               http://scottmoonen.com/2008/03/14/date-questions/ permanent;
+    rewrite ^/Deuteronomy$                 http://scottmoonen.com/2007/11/24/deuteronomy/ permanent;
+    rewrite ^/Exodus$                      http://scottmoonen.com/2007/09/27/exodus/ permanent;
+    rewrite ^/FunctionalPython$            http://scottmoonen.com/2005/06/09/functional-python/ permanent;
+    rewrite ^/Genesis$                     http://scottmoonen.com/2004/02/27/genesis/ permanent;
+    rewrite ^/GlobalWarming$               http://scottmoonen.com/2006/02/07/global-warming/ permanent;
+    rewrite ^/GodMovesInAMysteriousWay$    http://scottmoonen.com/2006/11/01/god-moves-in-a-mysterious-way/ permanent;
+    rewrite ^/GoedelEscherBach$            http://scottmoonen.com/2005/03/25/goedel-escher-bach/ permanent;
+    rewrite ^/HolyTrinity$                 http://scottmoonen.com/2005/04/11/holy-trinity/ permanent;
+    rewrite ^/HomeMaps$                    http://scottmoonen.com/2006/06/23/home-maps/ permanent;
+    rewrite ^/HoseaDiscussion$             http://scottmoonen.com/2004/06/08/hosea/ permanent;
+    rewrite ^/Immanuel$                    http://scottmoonen.com/2007/01/03/immanuel/ permanent;
+    rewrite ^/IntroductionToPointers$      http://scottmoonen.com/2004/10/02/introduction-to-pointers-in-c/ permanent;
+    rewrite ^/Joshua$                      http://scottmoonen.com/2007/12/03/joshua/ permanent;
+    rewrite ^/JoyAtTheEndOfTheTether$      http://scottmoonen.com/2005/06/28/joy-at-the-end-of-the-tether/ permanent;
+    rewrite ^/Judges$                      http://scottmoonen.com/2007/12/23/judges/ permanent;
+    rewrite ^/Leviticus$                   http://scottmoonen.com/2007/09/27/leviticus/ permanent;
+    rewrite ^/LoftnessOnWork$              http://scottmoonen.com/2004/01/20/loftness-on-work/ permanent;
+    rewrite ^/Log$                         http://scottmoonen.com/ permanent;
+    rewrite ^/LoveOfGod$                   http://scottmoonen.com/2005/02/01/love-of-god/ permanent;
+    rewrite ^/MarrowControversy$           http://scottmoonen.com/2006/07/29/the-marrow-controversy/ permanent;
+    rewrite ^/Moderation$                  http://scottmoonen.com/2004/06/24/moderation/ permanent;
+    rewrite ^/Numbers$                     http://scottmoonen.com/2007/10/09/numbers/ permanent;
+    rewrite ^/OntologicalArgument$         http://scottmoonen.com/2004/05/24/ontological-argument/ permanent;
+    rewrite ^/Photos$                      http://moonen.smugmug.com/Family/Family/2359327_K9APd permanent;
+    rewrite ^/Poetry$                      http://scottmoonen.com/category/poetry/ permanent;
+    rewrite ^/ProofOfTheNonExistenceOfGod$ http://scottmoonen.com/2007/06/09/proof-of-the-non-existence-of-god/ permanent;
+    rewrite ^/PythonPersistence$           http://scottmoonen.com/2004/10/01/python-persistence/ permanent;
+    rewrite ^/PythonSpikes$                http://scottmoonen.com/category/python/ permanent;
+    rewrite ^/PurposeDrivenLife$           http://scottmoonen.com/2005/01/13/purpose-driven-life/ permanent;
+    rewrite ^/Recipes$                     http://scottmoonen.com/category/recipes/ permanent;
+    rewrite ^/RedemptionAccomplishedAndApplied$ http://scottmoonen.com/2005/06/20/redemption-accomplished-and-applied/ permanent;
+    rewrite ^/ReflectionsOfAnOctogenarian$ http://scottmoonen.com/2006/11/08/reflections-of-an-octogenarian/ permanent;
+    rewrite ^/Resume$                      http://www.linkedin.com/in/smoonen permanent;
+    rewrite ^/ResumeAdvice$                http://scottmoonen.com/2006/06/09/resume-keywords/ permanent;
+    rewrite ^/Ruth$                        http://scottmoonen.com/2008/01/04/ruth/ permanent;
+    rewrite ^/Salsa$                       http://scottmoonen.com/2006/01/16/salsa/ permanent;
+    rewrite ^/SituationalCatechism$        http://scottmoonen.com/category/catechism/ permanent;
+    rewrite ^/SmallIsTheTrustWhenLoveIsGreen$   http://scottmoonen.com/2005/06/13/small-is-the-trust-when-love-is-green/ permanent;
+    rewrite ^/ThePuritans$                 http://scottmoonen.com/2004/06/25/the-puritans/ permanent;
+    rewrite ^/Truth$                       http://scottmoonen.com/2007/09/21/truth/ permanent;
+    rewrite ^/Vocation$                    http://delicious.com/smoonen/vocation permanent;
+    rewrite ^/Writings$                    http://scottmoonen.com/category/essays/ permanent;
+
+    if (!-e $request_filename) {
+      rewrite .* http://scottmoonen.com/ break;
+    }
+  }
+}
+
+server {
+  listen 80;
+  server_name hg.andstuff.org;
+  location / {
+    root /var/www/hg.andstuff.org;
+    index index.html index.htm;
+  }
+}
+
+server {
+  listen 80;
+  server_name truthadorned.org;
+  location / {
+    rewrite ^(.*)$ http://scottmoonen.com/$1 permanent;
+  }
+}
+
+server {
+  listen 80;
+  server_name blog.fullvalence.com;
+  location / {
+    rewrite ^(.*)$ http://scottmoonen.com/$1 permanent;
+  }
+}
+

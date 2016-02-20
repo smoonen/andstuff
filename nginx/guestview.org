@@ -1,0 +1,10 @@
+server {
+  listen 80;
+  server_name guestview.org www.guestview.org;
+
+  location / {
+    root /var/www/guestview.org;
+    index index.html index.htm;
+  }
+}
+
