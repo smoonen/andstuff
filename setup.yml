@@ -1,0 +1,43 @@
+- hosts: localhost
+  tasks:
+    - name: Set hostname
+      hostname: name=andstuff.org
+    - name: Install desired packages
+      apt: name=ansible,nginx,screen,dnsutils,traceroute,vim,rkhunter,git state=present
+    - name: Disallow password logins
+      lineinfile: dest=/etc/ssh/sshd_config regexp=^PasswordAuthentication line='PasswordAuthentication no'
+      notify: Restart SSHD
+    - name: Disallow root login
+      lineinfile: dest=/etc/ssh/sshd_config regexp=^PermitRootLogin line='PermitRootLogin no'
+      notify: Restart SSHD
+    - name: Create personal userid
+      user:
+        name: smoonen
+        comment: "Scott Moonen"
+        shell: /bin/bash
+        groups: admin,adm
+        generate_ssh_key: yes
+    - name: New id is an authorized key
+      command: creates=/home/smoonen/.ssh/authorized_keys cp /home/smoonen/.ssh/id_rsa.pub /home/smoonen/.ssh/authorized_keys
+    - name: ls should show hidden files
+      lineinfile: dest=/home/smoonen/.bashrc regexp="^\s*#?alias ls" line="alias ls='ls -aF --color=auto'"
+    - name: dir should show hidden files
+      lineinfile: dest=/home/smoonen/.bashrc regexp="^\s*#?alias dir" line="alias dir='ls -alF --color=auto'"
+    - name: Clone Git repo
+      git: repo=https://github.com/smoonen/andstuff dest=/home/andstuff
+    - name: Fix ownership for andstuff folder
+      file: path=/home/andstuff/ owner=smoonen group=smoonen recurse=yes
+    - name: Copy home folder
+      shell: creates=/home/smoonen/.forward cp -pfr `find /home/andstuff/home -mindepth 1 -maxdepth 1` /home/smoonen/
+    - name: Remove nginx default site
+      file: path=/etc/nginx/sites-enabled/default state=absent
+      notify: Reload nginx
+    - name: Create nginx custom sites
+      shell: creates=/etc/nginx/sites-enabled/andstuff.org ln -fs /home/andstuff/nginx/* /etc/nginx/sites-enabled/
+      notify: Reload nginx
+  handlers:
+    - name: Restart SSHD
+      service: name=sshd state=restarted
+    - name: Reload nginx
+      service: name=nginx state=reloaded
+
