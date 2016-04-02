@@ -3,13 +3,16 @@
     - name: Set hostname
       hostname: name=andstuff.org
     - name: Install desired packages
-      apt: name=ansible,nginx,screen,dnsutils,traceroute,vim,rkhunter,git state=present
+      apt: name=ansible,nginx,screen,dnsutils,traceroute,vim,rkhunter,git,mailutils state=present
     - name: Disallow password logins
       lineinfile: dest=/etc/ssh/sshd_config regexp=^PasswordAuthentication line='PasswordAuthentication no'
       notify: Restart SSHD
     - name: Disallow root login
       lineinfile: dest=/etc/ssh/sshd_config regexp=^PermitRootLogin line='PermitRootLogin no'
       notify: Restart SSHD
+    - name: Block public relay
+      lineinfile: dest=/etc/postfix/main.cf regexp=^inet_interfaces line='inet_interfaces = loopback-only'
+      notify: Reload postfix
     - name: Create personal userid
       user:
         name: smoonen
@@ -40,4 +43,6 @@
       service: name=sshd state=restarted
     - name: Reload nginx
       service: name=nginx state=reloaded
+    - name: Reload postfix
+      service: name=postfix state=reloaded
 
