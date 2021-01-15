@@ -1,9 +1,9 @@
 server {
   listen 80;
-  server_name groupsched.com;
+  server_name groupsched.com www.groupsched.com;
 
   location / {
-    rewrite .* http://www.groupsched.com/ break;
+    rewrite .* http://gospelsoftware.com/ break;
   }
 }
 
