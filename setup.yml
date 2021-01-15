@@ -44,5 +44,5 @@
     - name: Reload nginx
       service: name=nginx state=reloaded
     - name: Reload postfix
-      service: name=postfix state=reloaded
+      service: name=postfix state=restarted
 
