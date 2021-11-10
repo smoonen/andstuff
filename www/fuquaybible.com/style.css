@@ -1,0 +1,9 @@
+body {
+  background-color: #356;
+  color:            #fee;
+  text-align:       center;
+  font-family:      Verdana, Geneva, Helvetica, Arial, sans-serif;
+}
+div.center {
+  margin-top:       12em;
+}
