@@ -79,6 +79,22 @@ server {
 
 server {
   listen 80;
+  server_name moonen.us;
+  location / {
+    rewrite ^(.*)$ http://scottmoonen.com/$1 permanent;
+  }
+}
+
+server {
+  listen 80;
+  server_name moonens.us;
+  location / {
+    rewrite ^(.*)$ http://scottmoonen.com/$1 permanent;
+  }
+}
+
+server {
+  listen 80;
   server_name truthadorned.org;
   location / {
     rewrite ^(.*)$ http://scottmoonen.com/$1 permanent;
