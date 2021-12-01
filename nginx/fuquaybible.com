@@ -3,8 +3,22 @@ server {
   server_name fuquaybible.com;
 
   location / {
+    rewrite .* https://fuquaybible.com/ break;
+  }
+}
+
+server {
+  listen              443;
+  ssl                 on;
+  ssl_certificate     /home/smoonen/cert/fuquaybible.com.crt;
+  ssl_certificate_key /home/smoonen/cert/fuquaybible.com.key;
+  server_name         fuquaybible.com;
+
+  location / {
     root /home/andstuff/www/fuquaybible.com;
+    try_files $uri $uri.html $uri.xml $uri/index.html =404;
     index index.html index.htm;
+    charset utf-8;
   }
 }
 
