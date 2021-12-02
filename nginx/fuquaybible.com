@@ -3,14 +3,14 @@ server {
   server_name fuquaybible.com;
 
   location / {
-    rewrite ^(.*)$ https://fuquaybible.com/$1 break;
+    rewrite .* https://fuquaybible.com/$1 break;
   }
 }
 
 server {
   listen              443;
   ssl                 on;
-  ssl_certificate     /home/smoonen/cert/fuquaybible.com.crt;
+  ssl_certificate     /home/smoonen/cert/fuquaybible.com_chain.crt;
   ssl_certificate_key /home/smoonen/cert/fuquaybible.com.key;
   server_name         fuquaybible.com;
 
