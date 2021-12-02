@@ -3,7 +3,7 @@ server {
   server_name fuquaybible.com;
 
   location / {
-    rewrite .* https://fuquaybible.com/ break;
+    rewrite ^(.*)$ https://fuquaybible.com/$1 break;
   }
 }
 
@@ -16,9 +16,15 @@ server {
 
   location / {
     root /home/andstuff/www/fuquaybible.com;
-    try_files $uri $uri.html $uri.xml $uri/index.html =404;
+    try_files $uri $uri.html $uri $uri/index.html =404;
     index index.html index.htm;
     charset utf-8;
+  }
+
+  location /feed {
+    root /home/andstuff/www/fuquaybible.com;
+    try_files $uri $uri.xml $uri $uri/index.html =404;
+    types { } default_type "application/atom+xml; charset=utf-8";
   }
 }
 
